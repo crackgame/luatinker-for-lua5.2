@@ -11,6 +11,7 @@
 
 #include <new>
 #include <string.h>
+#include <lua.hpp>
 
 namespace lua_tinker
 {
@@ -896,7 +897,7 @@ namespace lua_tinker
 		static const char* name(const char* name = NULL)
 		{
 			static char temp[256] = "";
-			if(name) strcpy_s(temp, name);
+			if (name != NULL) strncpy(temp, name, sizeof(temp)-1);
 			return temp;
 		}
 	};

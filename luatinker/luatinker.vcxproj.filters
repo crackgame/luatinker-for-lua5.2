@@ -212,7 +212,7 @@
     <ClCompile Include="..\lua5.2\lzio.c">
       <Filter>lua5.2</Filter>
     </ClCompile>
-    <ClCompile Include="sample3.cpp">
+    <ClCompile Include="bug_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
