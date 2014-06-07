@@ -81,6 +81,13 @@ int main()
 	// sample3.lua 颇老阑 肺靛茄促.
 	lua_tinker::dofile(L, "sample6.lua");
 
+	// 进行一次强制回收
+	int mem = lua_gc(L, LUA_GCCOLLECT, 0);
+
+	// 获得lua占用内存
+	mem = lua_gc(L, LUA_GCCOUNT, 0);
+	printf("lua mem: %d\n", mem);
+
 #if 0
 	// Thread 甫 矫累茄促.
 	lua_newthread(L);

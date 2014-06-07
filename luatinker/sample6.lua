@@ -17,4 +17,11 @@ function ThreadTest()
 	print("ThreadTest ½áÊø")
 end
 
-temp = TestClass()
+function obj_life()
+	temp = TestClass()
+	temp = nil
+end
+
+str = "asfffffffffffffffffffffffffffffffeeeeeeeeeeeeee"
+
+obj_life()
