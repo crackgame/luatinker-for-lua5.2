@@ -448,7 +448,21 @@ namespace lua_tinker
 	{
 		V T::*_var;
 		mem_var(V T::*val) : _var(val) {}
-		void get(lua_State *L)	{ push<if_<is_obj<V>::value,V&,V>::type>(L, read<T*>(L,1)->*(_var));	}
+		void get(lua_State *L)
+		{
+		#if defined __GNUC__
+			if(is_obj<V>::value)
+			{
+				push<V&>(L,read<T*>(L,1)->*(_var));
+			}
+			else
+			{
+				push<V>(L,read<T*>(L,1)->*(_var));
+			}
+		#else
+			push<if_<is_obj<V>::value,VREF,V>::type>(L,read<T*>(L,1)->*(_var));
+		#endif
+		}
 		void set(lua_State *L)	{ read<T*>(L,1)->*(_var) = read<V>(L, 3);	}
 	};
 
